@@ -1,11 +1,119 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
+    <title>Proceso Digital</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <meta name="description" content="Optimización y digitalización de procesos administrativos para pymes y organizaciones públicas.">
+    <link rel="stylesheet" href="styles.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+
 </head>
+
 <body>
-    <h1>Hola</h1>
+
+<header class="header">
+    <div class="container nav-container">
+        <div class="logo">
+            <img src="./img/logo.png" alt="Proceso Digital Logo">
+            <!-- <span>Proceso <strong>Digital</strong></span> -->
+        </div>
+
+        <nav class="nav">
+            <a href="#inicio" data-i18n="nav_home">Inicio</a>
+            <a href="#servicios" data-i18n="nav_services">Servicios</a>
+            <a href="#impacto" data-i18n="nav_impact">Impacto</a>
+            <a href="#contacto" data-i18n="nav_contact">Contacto</a>
+        </nav>
+
+        <button id="langToggle" class="lang-btn">EN</button>
+    </div>
+</header>
+
+<section id="inicio" class="hero">
+    <div class="container hero-content">
+        <h1 data-i18n="hero_title">
+            Transformamos procesos manuales en soluciones digitales eficientes
+        </h1>
+
+        <p data-i18n="hero_text">
+            Ayudamos a pymes y organizaciones públicas a optimizar su gestión administrativa 
+            mediante automatización, digitalización y análisis de datos.
+        </p>
+
+        <a href="#contacto" class="btn-primary" data-i18n="hero_button">
+            Solicitar diagnóstico
+        </a>
+    </div>
+</section>
+
+<section id="servicios" class="section">
+    <div class="container">
+        <h2 data-i18n="services_title">Nuestros Servicios</h2>
+
+        <div class="cards">
+            <div class="card">
+                <h3 data-i18n="service1_title">Diagnóstico de procesos</h3>
+                <p data-i18n="service1_text">
+                    Analizamos circuitos administrativos e identificamos oportunidades de mejora.
+                </p>
+            </div>
+
+            <div class="card">
+                <h3 data-i18n="service2_title">Automatización</h3>
+                <p data-i18n="service2_text">
+                    Implementamos soluciones digitales accesibles sin infraestructura compleja.
+                </p>
+            </div>
+
+            <div class="card">
+                <h3 data-i18n="service3_title">Tableros de control</h3>
+                <p data-i18n="service3_text">
+                    Centralizamos información para una mejor toma de decisiones.
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="impacto" class="section light">
+    <div class="container">
+        <h2 data-i18n="impact_title">Impacto del Proyecto</h2>
+
+        <ul class="impact-list">
+            <li data-i18n="impact1">Reducción de tiempos administrativos.</li>
+            <li data-i18n="impact2">Disminución de errores operativos.</li>
+            <li data-i18n="impact3">Menor uso de papel y recursos físicos.</li>
+            <li data-i18n="impact4">Mayor profesionalización organizacional.</li>
+        </ul>
+    </div>
+</section>
+
+<section id="contacto" class="section">
+    <div class="container">
+        <h2 data-i18n="contact_title">Contacto</h2>
+
+        <form class="contact-form">
+            <input type="text" placeholder="Nombre" required>
+            <input type="email" placeholder="Email" required>
+            <textarea rows="5" placeholder="Mensaje" required></textarea>
+            <button type="submit" class="btn-primary" data-i18n="contact_button">
+                Enviar mensaje
+            </button>
+        </form>
+    </div>
+</section>
+
+<footer class="footer">
+    <div class="container">
+        <p>© 2026 Proceso Digital - Economía del Conocimiento</p>
+    </div>
+</footer>
+
+<script src="script.js"></script>
 </body>
 </html>
