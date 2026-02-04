@@ -1,28 +1,18 @@
-// Reveal animations
-const reveals = document.querySelectorAll('.reveal');
+const elements = document.querySelectorAll('.reveal');
 
-const revealObserver = new IntersectionObserver(entries => {
+const observer = new IntersectionObserver(
+  entries => {
     entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            entry.target.classList.add('active');
-            revealObserver.unobserve(entry.target);
-        }
+      if (entry.isIntersecting) {
+        entry.target.classList.add('active');
+        observer.unobserve(entry.target);
+      }
     });
-}, { threshold: 0.3 });
+  },
+  {
+    threshold: 0.25,
+    rootMargin: "0px 0px -60px 0px"
+  }
+);
 
-reveals.forEach(el => revealObserver.observe(el));
-
-
-// Color-changing help section
-const slides = document.querySelectorAll('.help-slide');
-
-const slideObserver = new IntersectionObserver(entries => {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            const bg = entry.target.dataset.bg;
-            entry.target.style.background = bg;
-        }
-    });
-}, { threshold: 0.6 });
-
-slides.forEach(slide => slideObserver.observe(slide));
+elements.forEach(el => observer.observe(el));
