@@ -1,11 +1,11 @@
 const elements = document.querySelectorAll('.reveal');
 
-const observer = new IntersectionObserver(
+const observerr = new IntersectionObserver(
   entries => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
         entry.target.classList.add('active');
-        observer.unobserve(entry.target);
+        observerr.unobserve(entry.target);
       }
     });
   },
@@ -15,4 +15,24 @@ const observer = new IntersectionObserver(
   }
 );
 
-elements.forEach(el => observer.observe(el));
+elements.forEach(el => observerr.observe(el));
+
+
+
+const steps = document.querySelectorAll(".timeline-step");
+
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if(entry.isIntersecting){
+      entry.target.style.opacity = 1;
+      entry.target.style.transform = "translateY(0)";
+    }
+  });
+},{ threshold: 0.2 });
+
+steps.forEach(step=>{
+  step.style.opacity = 0;
+  step.style.transform = "translateY(40px)";
+  step.style.transition = "all .8s cubic-bezier(.2,.8,.2,1)";
+  observer.observe(step);
+});
