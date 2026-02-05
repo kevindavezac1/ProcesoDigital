@@ -102,11 +102,13 @@ body {
 }
 
 .hero p {
-    max-width: 560px;
-    font-size: 19px;
+    max-width: 600px;   
+    font-size: 18px;   
+    line-height: 1.55;
     color: rgba(255, 255, 255, 0.85);
     margin-bottom: 44px;
 }
+
 
 /* BUTTONS */
 .btn-primary {
