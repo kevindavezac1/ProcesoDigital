@@ -417,13 +417,24 @@ body {
 
 @media (max-width: 900px) {
 
-  .timeline {
-    gap: 80px;
+  /* Ocultar visual del timeline en mobile */
+  .timeline .center {
+    display: none;
   }
 
+  .circle,
+  .circle::after {
+    display: none;
+  }
+
+  /* Reacomodar layout a una sola columna limpia */
   .timeline-step {
     grid-template-columns: 1fr;
-    text-align: center;
+    margin-top: 0;
+  }
+
+  .timeline {
+    gap: 36px;
   }
 
   .side.left,
@@ -433,14 +444,19 @@ body {
     padding: 0;
   }
 
-  .center {
-    margin: 24px 0;
+  .side p {
+    max-width: 420px;
+    margin-left: auto;
+    margin-right: auto;
   }
 
-  .circle .connector {
-    height: 120px;
+  .section-title {
+    margin-bottom: 48px;
+    font-size: 34px;
   }
 }
+
+
 
 /* =========================================
    PRINCIPIOS / ENFOQUE
