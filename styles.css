@@ -95,17 +95,22 @@ body {
   padding-top: 120px;
 }
 
-.hero h1 {
+.hero-title {
   font-size: 56px;
   line-height: 1.05;
   letter-spacing: -0.025em;
   margin-bottom: 28px;
 }
 
-.hero h1 span {
+.hero-title br {
+  line-height: 0.9;
+}
+
+.hero-sub {
   display: block;
   font-weight: 400;
   color: var(--green-soft);
+  margin-top: 6px; 
 }
 
 .hero p {
@@ -115,6 +120,26 @@ body {
   color: rgba(255, 255, 255, 0.85);
   margin-bottom: 44px;
 }
+
+/* ===============================
+   EFECTO TYPEWRITER (solo 1er renglón)
+================================= */
+
+#typewriter::after {
+  content: "|";
+  margin-left: 4px;
+  animation: blink 1s infinite;
+}
+
+#typewriter.done::after {
+  display: none; 
+}
+
+@keyframes blink {
+  0%, 50%, 100% { opacity: 1; }
+  25%, 75% { opacity: 0; }
+}
+
 
 /* =========================================
    BUTTONS
@@ -214,6 +239,7 @@ body {
   flex-direction: column;
   justify-content: center;
   box-shadow: 0 28px 60px rgba(0, 0, 0, 0.2);
+  
 }
 
 /* Flow layout */
@@ -659,6 +685,7 @@ body {
   .solution-card {
     height: auto;
     padding: 28px;
+    margin-top: 10px;
   }
 
   .flow-item {

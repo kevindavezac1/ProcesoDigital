@@ -51,3 +51,22 @@ function revealOnScroll() {
 
 window.addEventListener("scroll", revealOnScroll);
 revealOnScroll();
+
+document.addEventListener("DOMContentLoaded", () => {
+    const el = document.getElementById("typewriter");
+    const text = el.textContent;
+    el.textContent = "";
+    let i = 0;
+
+    function type() {
+      if (i < text.length) {
+        el.textContent += text.charAt(i);
+        i++;
+        setTimeout(type, 35); 
+      } else {
+        el.classList.add("done"); 
+      }
+    }
+
+    type();
+  });
