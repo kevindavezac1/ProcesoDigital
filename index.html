@@ -2,10 +2,13 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Tu Marca | Agencia Web</title>
   <meta name="description" content="Webs diseñadas para convertir. Rápidas, claras y enfocadas en resultados." />
   <link rel="stylesheet" href="styles.css" />
+
+  <!-- SOLO IMPORTACIÓN (sin uso en el HTML) -->
+  <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/4.1.0/model-viewer.min.js"></script>
 </head>
 
 <body>
@@ -28,93 +31,108 @@
     </div>
   </div>
 
-  <!-- Header -->
-  <header class="header" id="inicio">
-  <div class="container header-inner header-center">
-    <div class="nav-shell" id="navShell">
-<a class="nav-brand" href="#inicio" aria-label="Ir al inicio">
-  <img src="./img/logo.png" alt="EVA Studio" class="logo-img" />
-</a>
+  <!-- Header (SIN id duplicado) -->
+  <header class="header">
+    <div class="container header-inner">
+      <div class="nav-shell" id="navShell">
+        <a class="nav-brand" href="#inicio" aria-label="Ir al inicio">
+          <img src="./img/logo.png" alt="EVA Studio" class="logo-img" />
+        </a>
 
-      <nav class="nav-links" id="navMenu" aria-label="Navegación principal">
-        <a class="nav-link" href="#proceso">Proceso</a>
-        <a class="nav-link" href="#beneficios">Beneficios</a>
-        <a class="nav-link" href="#servicios">Servicios</a>
-        <a class="nav-link" href="#precios">Precios</a>
-        <a class="nav-link" href="#faq">FAQs</a>
-      </nav>
+        <nav class="nav-links" id="navMenu" aria-label="Navegación principal">
+          <a class="nav-link" href="#proceso">Proceso</a>
+          <a class="nav-link" href="#beneficios">Beneficios</a>
+          <a class="nav-link" href="#servicios">Servicios</a>
+          <a class="nav-link" href="#precios">Precios</a>
+          <a class="nav-link" href="#faq">FAQs</a>
+        </nav>
 
-      <a class="nav-cta" href="#contacto">Hablemos</a>
+        <a class="nav-cta magnetic" href="#contacto">Hablemos</a>
 
-      <button class="nav-toggle" id="navToggle" aria-label="Abrir menú" aria-expanded="false">
-        <span></span><span></span><span></span>
-      </button>
+        <button class="nav-toggle" id="navToggle" aria-label="Abrir menú" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
     </div>
-  </div>
-</header>
+  </header>
 
   <main>
-    <!-- HERO -->
-    <section class="section hero">
-      <div class="container hero-grid">
-        <div class="hero-copy">
-          <p class="pill reveal" data-reveal>Diseño • Desarrollo • Conversión</p>
+    <!-- HERO (solo texto/CTA) -->
+<section class="section hero" id="inicio">
+  <div class="container hero-grid">
+    <!-- LEFT -->
+    <div class="hero-copy">
+      <p class="pill reveal" data-reveal>Diseño • Desarrollo • Conversión</p>
 
-          <h1 class="reveal" data-reveal data-delay="60">
-            Webs diseñadas para vender,
-            <span class="gradient">no para decorar</span>.
-          </h1>
+      <h1 class="reveal" data-reveal data-delay="60">
+        Webs diseñadas para vender,
+        <span class="gradient">no para decorar</span>.
+      </h1>
 
-          <p class="muted reveal" data-reveal data-delay="120">
-            Convertí visitantes en clientes con un sitio rápido, claro y pensado para tu negocio.
-          </p>
+      <p class="muted reveal" data-reveal data-delay="120">
+        Convertí visitantes en clientes con un sitio rápido, claro y pensado para tu negocio.
+      </p>
 
-          <div class="hero-actions reveal" data-reveal data-delay="160">
-            <a class="btn btn-primary magnetic" href="#precios">
-              <span>Ver precios</span>
-              <i class="icon">→</i>
-            </a>
-            <a class="btn btn-ghost magnetic" href="#proyectos">
-              <span>Ver proyectos</span>
-              <i class="icon">↗</i>
-            </a>
-          </div>
-
-          <div class="hero-stats reveal" data-reveal data-delay="220">
-            <div class="stat tilt" data-tilt>
-              <span class="stat-num counter" data-to="30" data-suffix="+">0</span>
-              <span class="stat-label">proyectos entregados</span>
-            </div>
-            <div class="stat tilt" data-tilt>
-              <span class="stat-num">7–14</span>
-              <span class="stat-label">días promedio</span>
-            </div>
-            <div class="stat tilt" data-tilt>
-              <span class="stat-num counter" data-to="100" data-suffix="%">0</span>
-              <span class="stat-label">responsive</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="hero-media reveal" data-reveal data-delay="140" aria-hidden="true">
-  <div class="eva-video-card tilt" data-tilt>
-    <video
-      class="eva-video"
-      src="./img/eva.mp4"
-      autoplay
-      muted
-      loop
-      playsinline
-      preload="auto"
-    ></video>
-  </div>
-
-  <div class="ring r1"></div>
-  <div class="ring r2"></div>
-</div>
+      <div class="hero-actions reveal" data-reveal data-delay="160">
+        <a class="btn btn-primary magnetic" href="#precios">
+          <span>Ver precios</span>
+          <i class="icon">→</i>
+        </a>
+        <a class="btn btn-ghost magnetic" href="#proyectos">
+          <span>Ver proyectos</span>
+          <i class="icon">↗</i>
+        </a>
       </div>
-    </section>
 
+      <div class="hero-stats reveal" data-reveal data-delay="220">
+        <div class="stat tilt" data-tilt>
+          <span class="stat-num counter" data-to="30" data-suffix="+">0</span>
+          <span class="stat-label">proyectos entregados</span>
+        </div>
+        <div class="stat tilt" data-tilt>
+          <span class="stat-num">7–14</span>
+          <span class="stat-label">días promedio</span>
+        </div>
+        <div class="stat tilt" data-tilt>
+          <span class="stat-num counter" data-to="100" data-suffix="%">0</span>
+          <span class="stat-label">responsive</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- RIGHT (simple, clean) -->
+    <div class="hero-media reveal" data-reveal data-delay="140" aria-hidden="true">
+      <div class="model-card">
+<model-viewer
+autoplay
+  class="model-viewer"
+  src="./eve_wall-e__eva/scene.gltf"
+  alt="Modelo 3D de EVA"
+  camera-controls
+  auto-rotate
+  auto-rotate-delay="0"
+  rotation-per-second="10deg"
+  interaction-prompt="none"
+  environment-image="neutral"
+  exposure="1.05"
+  shadow-intensity="0.9"
+  shadow-softness="0.8"
+  camera-orbit="0deg 70deg 2m"
+  min-camera-orbit="auto 35deg 12m"
+  max-camera-orbit="auto 85deg 7m"
+  field-of-view="20deg"
+  camera-target="0m 0.55m 0m"
+
+  ar
+></model-viewer>
+      </div>
+    </div>
+  </div>
+</section>
+    <!-- <div>
+      <model-viewer src="./eve_wall-e__eva/scene.gltf" alt="Modelo 3D de EVA" auto-rotate camera-controls ar
+></model-viewer>
+    </div> -->
     <!-- PROYECTOS -->
     <section class="section" id="proyectos">
       <div class="container">
@@ -131,7 +149,6 @@
               <h3>Proyecto 01</h3>
               <p class="muted">Landing enfocada en consultas y conversión.</p>
             </div>
-            <span class="tag">Landing</span>
           </article>
 
           <article class="card project tilt reveal" data-reveal data-delay="60" data-tilt>
@@ -140,7 +157,6 @@
               <h3>Proyecto 02</h3>
               <p class="muted">Sitio institucional moderno y rápido.</p>
             </div>
-            <span class="tag">Institucional</span>
           </article>
 
           <article class="card project tilt reveal" data-reveal data-delay="120" data-tilt>
@@ -149,7 +165,6 @@
               <h3>Proyecto 03</h3>
               <p class="muted">Web a medida con secciones escalables.</p>
             </div>
-            <span class="tag">Custom</span>
           </article>
         </div>
       </div>
@@ -161,7 +176,9 @@
         <div class="section-head">
           <p class="kicker reveal" data-reveal>Proceso</p>
           <h2 class="reveal" data-reveal data-delay="60">Nuestro proceso</h2>
-          <p class="muted reveal" data-reveal data-delay="120">Tres pasos simples para pasar de idea a sitio publicado.</p>
+          <p class="muted reveal" data-reveal data-delay="120">
+            Tres pasos simples para pasar de idea a sitio publicado.
+          </p>
         </div>
 
         <div class="grid cards-3">
@@ -169,21 +186,18 @@
             <span class="step-num">01</span>
             <h3>Análisis y planificación</h3>
             <p class="muted">Alineamos objetivos, estructura y funcionalidades desde el primer día.</p>
-            <div class="spark" aria-hidden="true"></div>
           </article>
 
           <article class="card step tilt reveal" data-reveal data-delay="60" data-tilt>
             <span class="step-num">02</span>
             <h3>Diseño y desarrollo</h3>
             <p class="muted">Construimos tu sitio optimizado, responsive y listo para convertir.</p>
-            <div class="spark" aria-hidden="true"></div>
           </article>
 
           <article class="card step tilt reveal" data-reveal data-delay="120" data-tilt>
             <span class="step-num">03</span>
             <h3>Entrega y publicación</h3>
             <p class="muted">Revisamos, ajustamos y dejamos tu web online lista para usar.</p>
-            <div class="spark" aria-hidden="true"></div>
           </article>
         </div>
       </div>
@@ -312,7 +326,9 @@
         <div class="section-head">
           <p class="kicker reveal" data-reveal>FAQ</p>
           <h2 class="reveal" data-reveal data-delay="60">Preguntas frecuentes</h2>
-          <p class="muted reveal" data-reveal data-delay="120">Resolvemos dudas comunes sobre tiempos, contenido y cambios.</p>
+          <p class="muted reveal" data-reveal data-delay="120">
+            Resolvemos dudas comunes sobre tiempos, contenido y cambios.
+          </p>
         </div>
 
         <div class="faq">
@@ -384,10 +400,6 @@
   <footer class="footer">
     <div class="container footer-inner">
       <div class="footer-left">
-        <div class="brand brand-footer magnetic">
-          <span class="brand-mark"></span>
-          <span class="brand-name">TU MARCA</span>
-        </div>
         <p class="muted small">© Todos los derechos reservados</p>
       </div>
 
