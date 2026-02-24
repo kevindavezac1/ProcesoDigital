@@ -1,5 +1,6 @@
 <!doctype html>
 <html lang="es">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -26,28 +27,33 @@
   <!-- Topbar -->
   <div class="topbar">
     <div class="container topbar-inner">
-      <p class="topbar-text">✨ Cupos disponibles este mes</p>
-      <a class="topbar-link magnetic" href="#contacto">Hablemos</a>
+      <p class="topbar-text" data-i18n="topbar.text">✨ Cupos disponibles este mes</p>
+      <a class="topbar-link magnetic" href="#contacto" data-i18n="topbar.link">Hablemos</a>
     </div>
   </div>
 
-  <!-- Header (SIN id duplicado) -->
+  <!-- Header -->
   <header class="header">
     <div class="container header-inner">
       <div class="nav-shell" id="navShell">
         <a class="nav-brand" href="#inicio" aria-label="Ir al inicio">
-          <img src="./img/logo.png" alt="EVA Studio" class="logo-img" />
+          <img src="./img/logo-nav.png" alt="EVA Studio" class="logo-img" />
         </a>
 
         <nav class="nav-links" id="navMenu" aria-label="Navegación principal">
-          <a class="nav-link" href="#proceso">Proceso</a>
-          <a class="nav-link" href="#beneficios">Beneficios</a>
-          <a class="nav-link" href="#servicios">Servicios</a>
-          <a class="nav-link" href="#precios">Precios</a>
-          <a class="nav-link" href="#faq">FAQs</a>
+          <a class="nav-link" href="#proceso" data-i18n="nav.process">Proceso</a>
+          <a class="nav-link" href="#beneficios" data-i18n="nav.benefits">Beneficios</a>
+          <a class="nav-link" href="#servicios" data-i18n="nav.services">Servicios</a>
+          <a class="nav-link" href="#precios" data-i18n="nav.pricing">Precios</a>
+          <a class="nav-link" href="#faq" data-i18n="nav.faqs">FAQs</a>
         </nav>
 
-        <a class="nav-cta magnetic" href="#contacto">Hablemos</a>
+        <a class="nav-cta magnetic" href="#contacto" data-i18n="nav.cta">Hablemos</a>
+
+        <!-- Botón idioma -->
+        <button class="lang-btn magnetic" id="langToggle" type="button" aria-label="Cambiar idioma">
+          ES
+        </button>
 
         <button class="nav-toggle" id="navToggle" aria-label="Abrir menú" aria-expanded="false">
           <span></span><span></span><span></span>
@@ -57,113 +63,95 @@
   </header>
 
   <main>
-    <!-- HERO (solo texto/CTA) -->
-<section class="section hero" id="inicio">
-  <div class="container hero-grid">
-    <!-- LEFT -->
-    <div class="hero-copy">
-      <p class="pill reveal" data-reveal>Diseño • Desarrollo • Conversión</p>
+    <!-- HERO -->
+    <section class="section hero" id="inicio">
+      <div class="container hero-grid">
+        <!-- LEFT -->
+        <div class="hero-copy">
+          <p class="pill reveal" data-reveal data-i18n="hero.pill">Diseño • Desarrollo • Conversión</p>
 
-      <h1 class="reveal" data-reveal data-delay="60">
-        Webs diseñadas para vender,
-        <span class="gradient">no para decorar</span>.
-      </h1>
+          <h1 class="reveal hero-title" data-reveal data-delay="60">
+            <span class="hero-rotator" id="heroRotator" aria-label="Crea tu Web">
+              <span class="hero-rotator__word gradient" id="heroRotatorWord" data-i18n="hero.word1">CREA</span>
+            </span>
+          </h1>
 
-      <p class="muted reveal" data-reveal data-delay="120">
-        Convertí visitantes en clientes con un sitio rápido, claro y pensado para tu negocio.
-      </p>
+          <p class="muted reveal" data-reveal data-delay="120" data-i18n="hero.subtitle">
+            Convertí visitantes en clientes con un sitio rápido, claro y pensado para tu negocio.
+          </p>
 
-      <div class="hero-actions reveal" data-reveal data-delay="160">
-        <a class="btn btn-primary magnetic" href="#precios">
-          <span>Ver precios</span>
-          <i class="icon">→</i>
-        </a>
-        <a class="btn btn-ghost magnetic" href="#proyectos">
-          <span>Ver proyectos</span>
-          <i class="icon">↗</i>
-        </a>
-      </div>
+          <div class="hero-actions reveal" data-reveal data-delay="160">
+            <a class="btn btn-primary magnetic" href="#precios">
+              <span data-i18n="hero.btnPricing">Ver precios</span>
+              <i class="icon">→</i>
+            </a>
+            <a class="btn btn-ghost magnetic" href="#proyectos">
+              <span data-i18n="hero.btnProjects">Ver proyectos</span>
+              <i class="icon">↗</i>
+            </a>
+          </div>
 
-      <div class="hero-stats reveal" data-reveal data-delay="220">
-        <div class="stat tilt" data-tilt>
-          <span class="stat-num counter" data-to="30" data-suffix="+">0</span>
-          <span class="stat-label">proyectos entregados</span>
+          <div class="hero-stats reveal" data-reveal data-delay="220">
+            <div class="stat tilt" data-tilt>
+              <span class="stat-num counter" data-to="30" data-suffix="+">0</span>
+              <span class="stat-label" data-i18n="hero.stats.delivered">proyectos entregados</span>
+            </div>
+            <div class="stat tilt" data-tilt>
+              <span class="stat-num">7–14</span>
+              <span class="stat-label" data-i18n="hero.stats.days">días promedio</span>
+            </div>
+            <div class="stat tilt" data-tilt>
+              <span class="stat-num counter" data-to="100" data-suffix="%">0</span>
+              <span class="stat-label" data-i18n="hero.stats.responsive">responsive</span>
+            </div>
+          </div>
         </div>
-        <div class="stat tilt" data-tilt>
-          <span class="stat-num">7–14</span>
-          <span class="stat-label">días promedio</span>
-        </div>
-        <div class="stat tilt" data-tilt>
-          <span class="stat-num counter" data-to="100" data-suffix="%">0</span>
-          <span class="stat-label">responsive</span>
+
+        <!-- RIGHT -->
+        <div class="hero-media reveal" data-reveal data-delay="140" aria-hidden="true">
+          <div class="model-card">
+            <model-viewer autoplay class="model-viewer" src="./eve_wall-e__eva/scene.gltf" alt="Modelo 3D de EVA"
+              camera-controls auto-rotate auto-rotate-delay="0" rotation-per-second="10deg" interaction-prompt="none"
+              environment-image="neutral" exposure="1.05" shadow-intensity="0.9" shadow-softness="0.8"
+              camera-orbit="0deg 70deg 2m" min-camera-orbit="auto 35deg 12m" max-camera-orbit="auto 85deg 7m"
+              field-of-view="20deg" camera-target="0m 0.55m 0m" ar></model-viewer>
+          </div>
         </div>
       </div>
-    </div>
+    </section>
 
-    <!-- RIGHT (simple, clean) -->
-    <div class="hero-media reveal" data-reveal data-delay="140" aria-hidden="true">
-      <div class="model-card">
-<model-viewer
-autoplay
-  class="model-viewer"
-  src="./eve_wall-e__eva/scene.gltf"
-  alt="Modelo 3D de EVA"
-  camera-controls
-  auto-rotate
-  auto-rotate-delay="0"
-  rotation-per-second="10deg"
-  interaction-prompt="none"
-  environment-image="neutral"
-  exposure="1.05"
-  shadow-intensity="0.9"
-  shadow-softness="0.8"
-  camera-orbit="0deg 70deg 2m"
-  min-camera-orbit="auto 35deg 12m"
-  max-camera-orbit="auto 85deg 7m"
-  field-of-view="20deg"
-  camera-target="0m 0.55m 0m"
-
-  ar
-></model-viewer>
-      </div>
-    </div>
-  </div>
-</section>
-    <!-- <div>
-      <model-viewer src="./eve_wall-e__eva/scene.gltf" alt="Modelo 3D de EVA" auto-rotate camera-controls ar
-></model-viewer>
-    </div> -->
     <!-- PROYECTOS -->
     <section class="section" id="proyectos">
       <div class="container">
         <div class="section-head">
-          <p class="kicker reveal" data-reveal>Portfolio</p>
-          <h2 class="reveal" data-reveal data-delay="60">Proyectos recientes</h2>
-          <p class="muted reveal" data-reveal data-delay="120">Piezas claras y enfocadas en resultados.</p>
+          <p class="kicker reveal" data-reveal data-i18n="projects.kicker">Portfolio</p>
+          <h2 class="reveal" data-reveal data-delay="60" data-i18n="projects.title">Proyectos recientes</h2>
+          <p class="muted reveal" data-reveal data-delay="120" data-i18n="projects.subtitle">Piezas claras y enfocadas
+            en resultados.</p>
         </div>
 
         <div class="grid cards-3">
           <article class="card project tilt reveal" data-reveal data-tilt>
             <div class="card-thumb"></div>
             <div class="card-meta">
-              <h3>Proyecto 01</h3>
-              <p class="muted">Landing enfocada en consultas y conversión.</p>
+              <h3 data-i18n="projects.p1.title">Proyecto 01</h3>
+              <p class="muted" data-i18n="projects.p1.desc">Landing enfocada en consultas y conversión.</p>
             </div>
           </article>
 
           <article class="card project tilt reveal" data-reveal data-delay="60" data-tilt>
             <div class="card-thumb"></div>
             <div class="card-meta">
-              <h3>Proyecto 02</h3>
-              <p class="muted">Sitio institucional moderno y rápido.</p>
+              <h3 data-i18n="projects.p2.title">Proyecto 02</h3>
+              <p class="muted" data-i18n="projects.p2.desc">Sitio institucional moderno y rápido.</p>
             </div>
           </article>
 
           <article class="card project tilt reveal" data-reveal data-delay="120" data-tilt>
             <div class="card-thumb"></div>
             <div class="card-meta">
-              <h3>Proyecto 03</h3>
-              <p class="muted">Web a medida con secciones escalables.</p>
+              <h3 data-i18n="projects.p3.title">Proyecto 03</h3>
+              <p class="muted" data-i18n="projects.p3.desc">Web a medida con secciones escalables.</p>
             </div>
           </article>
         </div>
@@ -174,9 +162,9 @@ autoplay
     <section class="section" id="proceso">
       <div class="container">
         <div class="section-head">
-          <p class="kicker reveal" data-reveal>Proceso</p>
-          <h2 class="reveal" data-reveal data-delay="60">Nuestro proceso</h2>
-          <p class="muted reveal" data-reveal data-delay="120">
+          <p class="kicker reveal" data-reveal data-i18n="process.kicker">Proceso</p>
+          <h2 class="reveal" data-reveal data-delay="60" data-i18n="process.title">Nuestro proceso</h2>
+          <p class="muted reveal" data-reveal data-delay="120" data-i18n="process.subtitle">
             Tres pasos simples para pasar de idea a sitio publicado.
           </p>
         </div>
@@ -184,20 +172,23 @@ autoplay
         <div class="grid cards-3">
           <article class="card step tilt reveal" data-reveal data-tilt>
             <span class="step-num">01</span>
-            <h3>Análisis y planificación</h3>
-            <p class="muted">Alineamos objetivos, estructura y funcionalidades desde el primer día.</p>
+            <h3 data-i18n="process.s1.title">Análisis y planificación</h3>
+            <p class="muted" data-i18n="process.s1.desc">Alineamos objetivos, estructura y funcionalidades desde el
+              primer día.</p>
           </article>
 
           <article class="card step tilt reveal" data-reveal data-delay="60" data-tilt>
             <span class="step-num">02</span>
-            <h3>Diseño y desarrollo</h3>
-            <p class="muted">Construimos tu sitio optimizado, responsive y listo para convertir.</p>
+            <h3 data-i18n="process.s2.title">Diseño y desarrollo</h3>
+            <p class="muted" data-i18n="process.s2.desc">Construimos tu sitio optimizado, responsive y listo para
+              convertir.</p>
           </article>
 
           <article class="card step tilt reveal" data-reveal data-delay="120" data-tilt>
             <span class="step-num">03</span>
-            <h3>Entrega y publicación</h3>
-            <p class="muted">Revisamos, ajustamos y dejamos tu web online lista para usar.</p>
+            <h3 data-i18n="process.s3.title">Entrega y publicación</h3>
+            <p class="muted" data-i18n="process.s3.desc">Revisamos, ajustamos y dejamos tu web online lista para usar.
+            </p>
           </article>
         </div>
       </div>
@@ -207,23 +198,26 @@ autoplay
     <section class="section" id="beneficios">
       <div class="container">
         <div class="section-head">
-          <p class="kicker reveal" data-reveal>Beneficios</p>
-          <h2 class="reveal" data-reveal data-delay="60">¿Qué obtenés con nosotros?</h2>
-          <p class="muted reveal" data-reveal data-delay="120">Un servicio integral, claro y orientado a resultados.</p>
+          <p class="kicker reveal" data-reveal data-i18n="benefits.kicker">Beneficios</p>
+          <h2 class="reveal" data-reveal data-delay="60" data-i18n="benefits.title">¿Qué obtenés con nosotros?</h2>
+          <p class="muted reveal" data-reveal data-delay="120" data-i18n="benefits.subtitle">Un servicio integral, claro
+            y orientado a resultados.</p>
         </div>
 
         <div class="grid cards-3">
           <article class="card tilt reveal" data-reveal data-tilt>
-            <h3>Web a medida</h3>
-            <p class="muted">Diseño y contenido alineados a tu diferencial para atraer al cliente correcto.</p>
+            <h3 data-i18n="benefits.b1.title">Web a medida</h3>
+            <p class="muted" data-i18n="benefits.b1.desc">Diseño y contenido alineados a tu diferencial para atraer al
+              cliente correcto.</p>
           </article>
           <article class="card tilt reveal" data-reveal data-delay="60" data-tilt>
-            <h3>Performance real</h3>
-            <p class="muted">Sitios rápidos y livianos para mejorar experiencia y conversiones.</p>
+            <h3 data-i18n="benefits.b2.title">Performance real</h3>
+            <p class="muted" data-i18n="benefits.b2.desc">Sitios rápidos y livianos para mejorar experiencia y
+              conversiones.</p>
           </article>
           <article class="card tilt reveal" data-reveal data-delay="120" data-tilt>
-            <h3>Autogestionable</h3>
-            <p class="muted">Podés editar contenido y crecer sin depender de terceros.</p>
+            <h3 data-i18n="benefits.b3.title">Autogestionable</h3>
+            <p class="muted" data-i18n="benefits.b3.desc">Podés editar contenido y crecer sin depender de terceros.</p>
           </article>
         </div>
       </div>
@@ -233,35 +227,38 @@ autoplay
     <section class="section" id="servicios">
       <div class="container">
         <div class="section-head">
-          <p class="kicker reveal" data-reveal>Servicios</p>
-          <h2 class="reveal" data-reveal data-delay="60">Soluciones digitales en un solo lugar</h2>
-          <p class="muted reveal" data-reveal data-delay="120">Todo pensado para vender más.</p>
+          <p class="kicker reveal" data-reveal data-i18n="services.kicker">Servicios</p>
+          <h2 class="reveal" data-reveal data-delay="60" data-i18n="services.title">Soluciones digitales en un solo
+            lugar</h2>
+          <p class="muted reveal" data-reveal data-delay="120" data-i18n="services.subtitle">Todo pensado para vender
+            más.</p>
         </div>
 
         <div class="grid cards-3">
           <article class="card tilt reveal" data-reveal data-tilt>
-            <h3>Diseño y desarrollo</h3>
-            <p class="muted">Una web clara, profesional y coherente con tu marca.</p>
+            <h3 data-i18n="services.s1.title">Diseño y desarrollo</h3>
+            <p class="muted" data-i18n="services.s1.desc">Una web clara, profesional y coherente con tu marca.</p>
           </article>
           <article class="card tilt reveal" data-reveal data-delay="60" data-tilt>
-            <h3>Responsive</h3>
-            <p class="muted">Se ve perfecto en celular, tablet y computadora.</p>
+            <h3 data-i18n="services.s2.title">Responsive</h3>
+            <p class="muted" data-i18n="services.s2.desc">Se ve perfecto en celular, tablet y computadora.</p>
           </article>
           <article class="card tilt reveal" data-reveal data-delay="120" data-tilt>
-            <h3>Integración WhatsApp</h3>
-            <p class="muted">Acortamos el camino entre interés y consulta.</p>
+            <h3 data-i18n="services.s3.title">Integración WhatsApp</h3>
+            <p class="muted" data-i18n="services.s3.desc">Acortamos el camino entre interés y consulta.</p>
           </article>
+
           <article class="card tilt reveal" data-reveal data-tilt>
-            <h3>Formularios optimizados</h3>
-            <p class="muted">Capturá datos útiles con fricción mínima.</p>
+            <h3 data-i18n="services.s4.title">Formularios optimizados</h3>
+            <p class="muted" data-i18n="services.s4.desc">Capturá datos útiles con fricción mínima.</p>
           </article>
           <article class="card tilt reveal" data-reveal data-delay="60" data-tilt>
-            <h3>Seguridad y backups</h3>
-            <p class="muted">Protección y respaldos automáticos para evitar pérdidas.</p>
+            <h3 data-i18n="services.s5.title">Seguridad y backups</h3>
+            <p class="muted" data-i18n="services.s5.desc">Protección y respaldos automáticos para evitar pérdidas.</p>
           </article>
           <article class="card tilt reveal" data-reveal data-delay="120" data-tilt>
-            <h3>Métricas</h3>
-            <p class="muted">Configuración de analítica para medir resultados.</p>
+            <h3 data-i18n="services.s6.title">Métricas</h3>
+            <p class="muted" data-i18n="services.s6.desc">Configuración de analítica para medir resultados.</p>
           </article>
         </div>
       </div>
@@ -271,50 +268,53 @@ autoplay
     <section class="section" id="precios">
       <div class="container">
         <div class="section-head">
-          <p class="kicker reveal" data-reveal>Precios</p>
-          <h2 class="reveal" data-reveal data-delay="60">Planes que se ajustan a tus necesidades</h2>
-          <p class="muted reveal" data-reveal data-delay="120">Elegí un plan base y lo adaptamos.</p>
+          <p class="kicker reveal" data-reveal data-i18n="pricing.kicker">Precios</p>
+          <h2 class="reveal" data-reveal data-delay="60" data-i18n="pricing.title">Planes que se ajustan a tus
+            necesidades</h2>
+          <p class="muted reveal" data-reveal data-delay="120" data-i18n="pricing.subtitle">Elegí un plan base y lo
+            adaptamos.</p>
         </div>
 
         <div class="grid pricing">
           <article class="price card tilt reveal" data-reveal data-tilt>
-            <h3>Landing Page</h3>
+            <h3 data-i18n="pricing.p1.title">Landing Page</h3>
             <p class="price-value">$ <span class="counter" data-to="150">0</span></p>
-            <p class="muted small">Precio en dólares</p>
+            <p class="muted small" data-i18n="pricing.usdNote">Precio en dólares</p>
             <ul class="list">
-              <li>1 página</li>
-              <li>Diseño personalizado</li>
-              <li>100% responsive</li>
-              <li>WhatsApp o formulario</li>
+              <li data-i18n="pricing.p1.li1">1 página</li>
+              <li data-i18n="pricing.p1.li2">Diseño personalizado</li>
+              <li data-i18n="pricing.p1.li3">100% responsive</li>
+              <li data-i18n="pricing.p1.li4">WhatsApp o formulario</li>
             </ul>
-            <a class="btn btn-primary btn-block magnetic" href="#contacto">Quiero mi web</a>
+            <a class="btn btn-primary btn-block magnetic" href="#contacto" data-i18n="pricing.p1.cta">Quiero mi web</a>
           </article>
 
           <article class="price card featured tilt reveal" data-reveal data-delay="60" data-tilt>
-            <div class="badge">Más elegido</div>
-            <h3>Institucional</h3>
+            <div class="badge" data-i18n="pricing.badge">Más elegido</div>
+            <h3 data-i18n="pricing.p2.title">Institucional</h3>
             <p class="price-value">$ <span class="counter" data-to="200">0</span></p>
-            <p class="muted small">Precio en dólares</p>
+            <p class="muted small" data-i18n="pricing.usdNote">Precio en dólares</p>
             <ul class="list">
-              <li>Hasta 5 secciones</li>
-              <li>Diseño personalizado</li>
-              <li>SEO básico</li>
-              <li>Formulario + WhatsApp</li>
+              <li data-i18n="pricing.p2.li1">Hasta 5 secciones</li>
+              <li data-i18n="pricing.p2.li2">Diseño personalizado</li>
+              <li data-i18n="pricing.p2.li3">SEO básico</li>
+              <li data-i18n="pricing.p2.li4">Formulario + WhatsApp</li>
             </ul>
-            <a class="btn btn-primary btn-block magnetic" href="#contacto">Quiero mi web</a>
+            <a class="btn btn-primary btn-block magnetic" href="#contacto" data-i18n="pricing.p2.cta">Quiero mi web</a>
           </article>
 
           <article class="price card tilt reveal" data-reveal data-delay="120" data-tilt>
-            <h3>Web a medida</h3>
-            <p class="price-value">Personalizada</p>
-            <p class="muted small">Cotizamos según alcance</p>
+            <h3 data-i18n="pricing.p3.title">Web a medida</h3>
+            <p class="price-value" data-i18n="pricing.p3.price">Personalizada</p>
+            <p class="muted small" data-i18n="pricing.p3.note">Cotizamos según alcance</p>
             <ul class="list">
-              <li>Estructura y diseño</li>
-              <li>Optimización de rendimiento</li>
-              <li>Integraciones</li>
-              <li>Analítica y medición</li>
+              <li data-i18n="pricing.p3.li1">Estructura y diseño</li>
+              <li data-i18n="pricing.p3.li2">Optimización de rendimiento</li>
+              <li data-i18n="pricing.p3.li3">Integraciones</li>
+              <li data-i18n="pricing.p3.li4">Analítica y medición</li>
             </ul>
-            <a class="btn btn-ghost btn-block magnetic" href="#contacto">Agendar una llamada</a>
+            <a class="btn btn-ghost btn-block magnetic" href="#contacto" data-i18n="pricing.p3.cta">Agendar una
+              llamada</a>
           </article>
         </div>
       </div>
@@ -324,52 +324,52 @@ autoplay
     <section class="section" id="faq">
       <div class="container">
         <div class="section-head">
-          <p class="kicker reveal" data-reveal>FAQ</p>
-          <h2 class="reveal" data-reveal data-delay="60">Preguntas frecuentes</h2>
-          <p class="muted reveal" data-reveal data-delay="120">
+          <p class="kicker reveal" data-reveal data-i18n="faq.kicker">FAQ</p>
+          <h2 class="reveal" data-reveal data-delay="60" data-i18n="faq.title">Preguntas frecuentes</h2>
+          <p class="muted reveal" data-reveal data-delay="120" data-i18n="faq.subtitle">
             Resolvemos dudas comunes sobre tiempos, contenido y cambios.
           </p>
         </div>
 
         <div class="faq">
           <details class="faq-item reveal" data-reveal open>
-            <summary class="magnetic">¿En cuánto tiempo está lista la web?</summary>
-            <div class="faq-content">
+            <summary class="magnetic" data-i18n="faq.q1.q">¿En cuánto tiempo está lista la web?</summary>
+            <div class="faq-content" data-i18n="faq.q1.a">
               Depende del alcance. Una landing suele estar en 7–10 días y un institucional en 10–14 días.
             </div>
           </details>
 
           <details class="faq-item reveal" data-reveal data-delay="60">
-            <summary class="magnetic">¿La web es autogestionable?</summary>
-            <div class="faq-content">
+            <summary class="magnetic" data-i18n="faq.q2.q">¿La web es autogestionable?</summary>
+            <div class="faq-content" data-i18n="faq.q2.a">
               Sí. Te dejamos todo preparado para que puedas editar textos e imágenes sin complicaciones.
             </div>
           </details>
 
           <details class="faq-item reveal" data-reveal data-delay="120">
-            <summary class="magnetic">¿Tengo que aportar el contenido?</summary>
-            <div class="faq-content">
+            <summary class="magnetic" data-i18n="faq.q3.q">¿Tengo que aportar el contenido?</summary>
+            <div class="faq-content" data-i18n="faq.q3.a">
               Idealmente sí (texto base, fotos, servicios). Si no lo tenés, te ayudamos a ordenarlo y redactarlo.
             </div>
           </details>
 
           <details class="faq-item reveal" data-reveal>
-            <summary class="magnetic">¿Incluye versión móvil?</summary>
-            <div class="faq-content">
+            <summary class="magnetic" data-i18n="faq.q4.q">¿Incluye versión móvil?</summary>
+            <div class="faq-content" data-i18n="faq.q4.a">
               Sí. Diseñamos pensando primero en celular para asegurar una experiencia excelente.
             </div>
           </details>
 
           <details class="faq-item reveal" data-reveal data-delay="60">
-            <summary class="magnetic">¿Puedo pedir cambios una vez entregada?</summary>
-            <div class="faq-content">
+            <summary class="magnetic" data-i18n="faq.q5.q">¿Puedo pedir cambios una vez entregada?</summary>
+            <div class="faq-content" data-i18n="faq.q5.a">
               Incluimos una ronda de ajustes posteriores a la entrega. Extra cambios se cotizan aparte.
             </div>
           </details>
 
           <details class="faq-item reveal" data-reveal data-delay="120">
-            <summary class="magnetic">¿El dominio y hosting están incluidos?</summary>
-            <div class="faq-content">
+            <summary class="magnetic" data-i18n="faq.q6.q">¿El dominio y hosting están incluidos?</summary>
+            <div class="faq-content" data-i18n="faq.q6.a">
               Podemos gestionarlos con vos. La compra y renovación dependen del proveedor elegido.
             </div>
           </details>
@@ -381,15 +381,16 @@ autoplay
     <section class="section cta" id="contacto">
       <div class="container cta-inner reveal" data-reveal>
         <div>
-          <h2>¿Tenés alguna consulta? Hablemos.</h2>
-          <p class="muted">Agendá una llamada gratuita y te decimos qué conviene para tu caso.</p>
+          <h2 data-i18n="cta.title">¿Tenés alguna consulta? Hablemos.</h2>
+          <p class="muted" data-i18n="cta.subtitle">Agendá una llamada gratuita y te decimos qué conviene para tu caso.
+          </p>
         </div>
         <div class="cta-actions">
           <a class="btn btn-primary magnetic" href="https://wa.link/" target="_blank" rel="noreferrer">
-            <span>Consulta gratis</span><i class="icon">↗</i>
+            <span data-i18n="cta.btn1">Consulta gratis</span><i class="icon">↗</i>
           </a>
           <a class="btn btn-ghost magnetic" href="#inicio">
-            <span>Volver arriba</span><i class="icon">↑</i>
+            <span data-i18n="cta.btn2">Volver arriba</span><i class="icon">↑</i>
           </a>
         </div>
       </div>
@@ -400,19 +401,20 @@ autoplay
   <footer class="footer">
     <div class="container footer-inner">
       <div class="footer-left">
-        <p class="muted small">© Todos los derechos reservados</p>
+        <p class="muted small" data-i18n="footer.rights">© Todos los derechos reservados</p>
       </div>
 
       <div class="footer-links">
-        <a class="magnetic" href="#proceso">Proceso</a>
-        <a class="magnetic" href="#beneficios">Beneficios</a>
-        <a class="magnetic" href="#servicios">Servicios</a>
-        <a class="magnetic" href="#precios">Precios</a>
-        <a class="magnetic" href="#faq">FAQs</a>
+        <a class="magnetic" href="#proceso" data-i18n="footer.process">Proceso</a>
+        <a class="magnetic" href="#beneficios" data-i18n="footer.benefits">Beneficios</a>
+        <a class="magnetic" href="#servicios" data-i18n="footer.services">Servicios</a>
+        <a class="magnetic" href="#precios" data-i18n="footer.pricing">Precios</a>
+        <a class="magnetic" href="#faq" data-i18n="footer.faqs">FAQs</a>
       </div>
     </div>
   </footer>
 
   <script src="script.js"></script>
 </body>
+
 </html>
