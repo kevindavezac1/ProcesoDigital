@@ -580,18 +580,13 @@ h3{ margin: 0 0 8px; font-size: 18px; }
 
 /* Track */
 .tech-strip__track{
-  display: flex;
-  align-items: center;
-  gap: 56px;
-  width: max-content;
-  will-change: transform;
-  animation: techMarquee 18s linear infinite;
+  display:flex;
+  gap:60px;
+  width:max-content;
+  animation: techMarquee 20s linear infinite;
 }
 
-/* Pausa al hover (opcional) */
-.tech-strip__viewport:hover .tech-strip__track{
-  animation-play-state: paused;
-}
+
 
 /* Items */
 .tech-strip__item{
@@ -610,6 +605,7 @@ h3{ margin: 0 0 8px; font-size: 18px; }
   object-fit: contain;
   opacity: .92;
 }
+
 
 /* Se ven 3 aprox: limitamos el ancho del viewport */
 @media (min-width: 981px){
