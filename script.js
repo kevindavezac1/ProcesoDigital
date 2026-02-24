@@ -859,3 +859,45 @@ faqItems.forEach((item) => {
     if (btn) btn.addEventListener("click", toggleLang);
   });
 })();
+
+// ===== Tech carousel: loop perfecto (auto) =====
+(() => {
+  const track = document.getElementById("techTrack");
+  if (!track) return;
+
+  const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  if (reduce) return;
+
+  function setMarqueeDistance() {
+    const items = Array.from(track.children);
+    // la mitad son los “originales”, la otra mitad son los duplicados
+    const half = Math.floor(items.length / 2);
+    let w = 0;
+    for (let i = 0; i < half; i++) w += items[i].getBoundingClientRect().width;
+    // sumar gaps (gap = 56px desktop o 36px mobile). Lo leemos real:
+    const style = getComputedStyle(track);
+    const gap = parseFloat(style.columnGap || style.gap || "0");
+    w += gap * (half - 1);
+
+    track.style.setProperty("--marquee-distance", `${w}px`);
+  }
+
+  // Reemplaza la animación por una basada en px reales
+  const styleTag = document.createElement("style");
+  styleTag.textContent = `
+    @keyframes techMarqueePx{
+      from{ transform: translateX(0); }
+      to{ transform: translateX(calc(-1 * var(--marquee-distance, 0px))); }
+    }
+    #techTrack{ animation-name: techMarqueePx; }
+  `;
+  document.head.appendChild(styleTag);
+
+  // Inicial + resize
+  const onResize = () => {
+    setMarqueeDistance();
+  };
+
+  window.addEventListener("load", onResize);
+  window.addEventListener("resize", onResize, { passive: true });
+})();
