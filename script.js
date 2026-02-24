@@ -30,6 +30,174 @@ if (navToggle && navMenu) {
   });
 }
 
+// ===========================
+// STARFIELD BACKGROUND (Canvas) - Multi-direction + Fade
+// ===========================
+// ===========================
+// STARFIELD BACKGROUND (Canvas) - Full screen, multi-direction, fade, wrap
+// ===========================
+(() => {
+  const canvas = document.getElementById("stars");
+  if (!canvas) return;
+
+  const ctx = canvas.getContext("2d", { alpha: true });
+  const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  let w = 0, h = 0, dpr = 1;
+  let stars = [];
+  let raf = null;
+
+  // Ajustes
+  const DENSITY = 0.00016;    // cantidad de estrellas
+  const UP_BIAS = 0.22;       // tendencia general hacia arriba (0..0.6)
+  const DRIFT = 0.55;         // caos en direcciones (0..1)
+  const SIZE_MIN = 0.25;      // estrellas más chicas
+  const SIZE_MAX = 1.10;
+  const SPEED_MIN = 0.10;
+  const SPEED_MAX = 0.55;
+  const TWINKLE = 0.10;
+
+  function lerp(a, b, t) { return a + (b - a) * t; }
+  function rand(min, max) { return Math.random() * (max - min) + min; }
+  function clamp(v, min, max) { return Math.max(min, Math.min(max, v)); }
+
+  function resize() {
+    dpr = Math.min(window.devicePixelRatio || 1, 2);
+    w = Math.floor(window.innerWidth);
+    h = Math.floor(window.innerHeight);
+
+    canvas.width = Math.floor(w * dpr);
+    canvas.height = Math.floor(h * dpr);
+    canvas.style.width = w + "px";
+    canvas.style.height = h + "px";
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+
+    const count = Math.floor(w * h * DENSITY);
+    stars = new Array(count).fill(0).map(() => makeStar(true));
+  }
+
+  function makeStar(initial = false) {
+    // profundidad para variar tamaño/velocidad
+    const z = Math.pow(Math.random(), 1.7); // más al fondo
+    const r = lerp(SIZE_MAX, SIZE_MIN, z);
+    const sp = lerp(SPEED_MAX, SPEED_MIN, z);
+
+    // dirección libre, con ligera preferencia hacia arriba
+    // vx: -1..1, vy: -1..1, luego sesgo hacia arriba (negativo)
+    let vx = rand(-1, 1);
+    let vy = rand(-1, 1) - UP_BIAS;
+
+    // normalizamos y aplicamos speed
+    const len = Math.hypot(vx, vy) || 1;
+    vx = (vx / len) * sp * (0.6 + DRIFT);
+    vy = (vy / len) * sp * (0.8 + DRIFT);
+
+    // vida + fade (evitamos que todas nazcan “invisibles”)
+    const life = Math.floor(rand(220, 520));
+    const age = initial ? Math.floor(rand(0, life)) : 0; // desfasadas al inicio
+
+    return {
+      x: rand(0, w),
+      y: rand(0, h),
+      r,
+      vx,
+      vy,
+      z,
+      aBase: rand(0.25, 0.9),
+      t: rand(0, Math.PI * 2),
+      life,
+      age,
+    };
+  }
+
+  function lifeAlpha(age, life) {
+    // 0 -> 1 -> 0 (suave)
+    const p = clamp(age / life, 0, 1);
+    return Math.sin(p * Math.PI);
+  }
+
+  function drawVignetteGlow() {
+    const g = ctx.createRadialGradient(
+      w * 0.5, h * 0.35, 0,
+      w * 0.5, h * 0.35, Math.max(w, h) * 0.8
+    );
+    g.addColorStop(0, "rgba(255,255,255,0.05)");
+    g.addColorStop(0.45, "rgba(255,255,255,0.02)");
+    g.addColorStop(1, "rgba(0,0,0,0)");
+    ctx.fillStyle = g;
+    ctx.fillRect(0, 0, w, h);
+  }
+
+  function wrap(s) {
+    // Cuando sale por un lado, entra por el lado opuesto
+    const pad = 40;
+    if (s.x < -pad) s.x = w + pad;
+    if (s.x > w + pad) s.x = -pad;
+    if (s.y < -pad) s.y = h + pad;
+    if (s.y > h + pad) s.y = -pad;
+  }
+
+  function resetStar(s) {
+    // “Reaparece” en un lugar random dentro de pantalla
+    const n = makeStar(false);
+    s.x = rand(0, w);
+    s.y = rand(0, h);
+    s.r = n.r;
+    s.vx = n.vx;
+    s.vy = n.vy;
+    s.z = n.z;
+    s.aBase = n.aBase;
+    s.t = n.t;
+    s.life = n.life;
+    s.age = 0;
+  }
+
+  function tick() {
+    ctx.clearRect(0, 0, w, h);
+
+    // Fondo negro
+    ctx.fillStyle = "#050508";
+    ctx.fillRect(0, 0, w, h);
+
+    drawVignetteGlow();
+
+    for (let i = 0; i < stars.length; i++) {
+      const s = stars[i];
+
+      if (!reduce) {
+        s.x += s.vx;
+        s.y += s.vy;
+      }
+
+      // twinkle + fade por vida
+      const tw = reduce ? 0 : Math.sin(s.t) * TWINKLE;
+      s.t += 0.02 + (1 - s.z) * 0.01;
+      s.age++;
+
+      const alpha = clamp(s.aBase * lifeAlpha(s.age, s.life) + tw, 0, 1);
+
+      ctx.beginPath();
+      ctx.fillStyle = `rgba(255,255,255,${alpha})`;
+      ctx.arc(s.x, s.y, s.r, 0, Math.PI * 2);
+      ctx.fill();
+
+      wrap(s);
+
+      // al terminar vida, resetea (aparece/desaparece sin quedar “vacío arriba”)
+      if (s.age >= s.life) resetStar(s);
+    }
+
+    raf = requestAnimationFrame(tick);
+  }
+
+  // Init
+  resize();
+  window.addEventListener("resize", resize, { passive: true });
+
+  tick();
+  if (reduce && raf) cancelAnimationFrame(raf);
+})();
+
 // ========= Active nav link (IntersectionObserver) =========
 const sections = ["proceso", "beneficios", "servicios", "precios", "faq"]
   .map((id) => document.getElementById(id))
