@@ -7,8 +7,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const viewport = document.getElementById("pcrViewport");
   const track = document.getElementById("pcrTrack");
 
-  const pauseBtn = document.getElementById("pcrPauseBtn");
-  const speedBtn = document.getElementById("pcrSpeedBtn");
+
 
   const modal = document.getElementById("pcrModal");
   const closeBtn = document.getElementById("pcrClose");
@@ -35,8 +34,8 @@ document.addEventListener("DOMContentLoaded", () => {
       desc: "Landing enfocada en consultas y reservas con WhatsApp / formulario.",
       days: "7–10 días",
       tech: ["HTML", "CSS", "JS"],
-      cover: "./img/proj-1-cover.jpg",
-      images: ["./img/proj-1-1.jpg", "./img/proj-1-2.jpg", "./img/proj-1-3.jpg"],
+      cover: "./img/img-projects/landing-turnos.jpg",
+      images: ["./img/img-projects/landing-turnos.jpg"],
       includes: ["Diseño UI", "Secciones a medida", "WhatsApp / Form", "Deploy + performance"],
       cta: "https://wa.link/"
     },
@@ -47,8 +46,8 @@ document.addEventListener("DOMContentLoaded", () => {
       desc: "Registro automático con validación y reportes (Sheets / Apps Script).",
       days: "10–14 días",
       tech: ["Apps Script", "Google Sheets", "JS"],
-      cover: "./img/proj-2-cover.jpg",
-      images: ["./img/logo-nav.png", "./img/proj-2-2.jpg"],
+      cover: "./img/img-projects/registro-asistencia.png",
+      images: ["./img/img-projects/registro-asistencia.png"],
       includes: ["Validación", "Registro", "Panel", "Documentación"],
       cta: "https://wa.link/"
     },
@@ -59,8 +58,8 @@ document.addEventListener("DOMContentLoaded", () => {
       desc: "Dashboard con KPIs, eventos y filtros para seguimiento real.",
       days: "5–7 días",
       tech: ["Analytics", "Tag Manager", "Looker"],
-      cover: "./img/proj-3-cover.jpg",
-      images: ["./img/proj-3-1.jpg", "./img/proj-3-2.jpg"],
+      cover: "./img/img-projects/panel-metricas.png",
+      images: ["./img/img-projects/panel-metricas.png"],
       includes: ["KPIs", "Eventos", "Tableros", "Entrega final"],
       cta: "https://wa.link/"
     }
@@ -101,6 +100,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   track.innerHTML = projects.map(cardHTML).join("") + projects.map(cardHTML).join("");
+  setSpeed("7s");
 
   // Config speed
   // setSpeed(speeds[speedIndex].value);
@@ -110,20 +110,7 @@ document.addEventListener("DOMContentLoaded", () => {
     viewport.style.setProperty("--pcr-speed", v);
   }
 
-  // Pause control
-  pauseBtn?.addEventListener("click", () => {
-    const paused = viewport.getAttribute("data-paused") === "true";
-    viewport.setAttribute("data-paused", paused ? "false" : "true");
-    pauseBtn.setAttribute("aria-pressed", paused ? "false" : "true");
-    pauseBtn.textContent = paused ? "Pausar" : "Reanudar";
-  });
 
-  // Speed control
-  speedBtn?.addEventListener("click", () => {
-    speedIndex = (speedIndex + 1) % speeds.length;
-    setSpeed(speeds[speedIndex].value);
-    speedBtn.textContent = `Velocidad: ${speeds[speedIndex].label}`;
-  });
 
   // Open modal
   track.addEventListener("click", (e) => {
