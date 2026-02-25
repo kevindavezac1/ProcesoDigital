@@ -10,14 +10,15 @@
 
   <!-- SOLO IMPORTACIÓN (sin uso en el HTML) -->
   <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/4.1.0/model-viewer.min.js"></script>
+  <script src="./carrucel.js"></script>
 </head>
 
 <body>
   <!-- Background FX -->
-<div class="bg" aria-hidden="true">
-  <canvas id="stars"></canvas>
-  <div class="noise"></div>
-</div>
+  <div class="bg" aria-hidden="true">
+    <canvas id="stars"></canvas>
+    <div class="noise"></div>
+  </div>
 
   <!-- Cursor Glow -->
   <div class="cursor-glow" id="cursorGlow" aria-hidden="true"></div>
@@ -109,9 +110,9 @@
         <div class="hero-media reveal" data-reveal data-delay="140" aria-hidden="true">
           <div class="model-card">
             <model-viewer autoplay class="model-viewer" src="./eve_wall-e__eva/scene.gltf" alt="Modelo 3D de EVA"
-              camera-controls auto-rotate auto-rotate-delay="0" rotation-per-second="10deg" interaction-prompt="none"
+              camera-controls auto-rotate auto-rotate-delay="0" rotation-per-second="8deg" interaction-prompt="none"
               environment-image="neutral" exposure="1.05" shadow-intensity="0.9" shadow-softness="0.8"
-              camera-orbit="0deg 70deg 2m" min-camera-orbit="auto 35deg 12m" max-camera-orbit="auto 85deg 7m"
+              camera-orbit="30deg 70deg 2m" min-camera-orbit="auto 35deg 12m" max-camera-orbit="auto 85deg 7m"
               field-of-view="20deg" camera-target="0m 0.55m 0m" ar></model-viewer>
           </div>
         </div>
@@ -119,68 +120,117 @@
     </section>
 
     <section class="tech-strip" aria-label="Tecnologías">
-  <div class="container">
-    <div class="tech-strip__viewport">
-      <div class="tech-strip__track">
+      <div class="container">
+        <div class="tech-strip__viewport">
+          <div class="tech-strip__track">
 
-        <!-- lista original -->
-        <div class="tech-strip__item"><img src="./img/WooComerce.avif" alt="WooCommerce"></div>
-        <div class="tech-strip__item"><img src="./img/googleAnalitics.avif" alt="Google Analytics"></div>
-        <div class="tech-strip__item"><img src="./img/wordrpess.avif" alt="WordPress"></div>
-        <div class="tech-strip__item"><img src="./img/elementor.avif" alt="Elementor"></div>
-        <div class="tech-strip__item"><img src="./img/react.png" alt="React"></div>
-        <div class="tech-strip__item"><img src="./img/html-css-js.png" alt="HTML JS CSS"></div>
+            <!-- lista original -->
+            <div class="tech-strip__item"><img src="./img/WooComerce.avif" alt="WooCommerce"></div>
+            <div class="tech-strip__item"><img src="./img/googleAnalitics.avif" alt="Google Analytics"></div>
+            <div class="tech-strip__item"><img src="./img/wordrpess.avif" alt="WordPress"></div>
+            <div class="tech-strip__item"><img src="./img/elementor.avif" alt="Elementor"></div>
+            <div class="tech-strip__item"><img src="./img/react.png" alt="React"></div>
+            <div class="tech-strip__item"><img src="./img/html-css-js.png" alt="HTML JS CSS"></div>
 
-        <!-- duplicado para loop infinito -->
-        <div class="tech-strip__item"><img src="./img/WooComerce.avif"></div>
-        <div class="tech-strip__item"><img src="./img/googleAnalitics.avif"></div>
-        <div class="tech-strip__item"><img src="./img/wordrpess.avif"></div>
-        <div class="tech-strip__item"><img src="./img/elementor.avif"></div>
-        <div class="tech-strip__item"><img src="./img/react.png"></div>
-        <div class="tech-strip__item"><img src="./img/html-css-js.png"></div>
+            <!-- duplicado para loop infinito -->
+            <div class="tech-strip__item"><img src="./img/WooComerce.avif"></div>
+            <div class="tech-strip__item"><img src="./img/googleAnalitics.avif"></div>
+            <div class="tech-strip__item"><img src="./img/wordrpess.avif"></div>
+            <div class="tech-strip__item"><img src="./img/elementor.avif"></div>
+            <div class="tech-strip__item"><img src="./img/react.png"></div>
+            <div class="tech-strip__item"><img src="./img/html-css-js.png"></div>
 
+          </div>
+        </div>
       </div>
+    </section>
+
+    <!-- ====== PROYECTOS EN MOVIMIENTO (solo carrusel) ====== -->
+<link rel="stylesheet" href="./prc.css" />
+
+<section class="pcr" id="proyectos-carousel" aria-label="Carrusel de proyectos destacados">
+  <div class="container">
+    <div class="pcr-head">
+      <p class="pcr-kicker">Destacados</p>
+      <h2 class="pcr-title">Proyectos en movimiento</h2>
+      <p class="pcr-subtitle">Tocá una tarjeta para ver el detalle, imágenes y tecnologías.</p>
+    </div>
+
+    <div class="pcr-topbar">
+      <div class="pcr-hint">
+        <span class="pcr-dot" aria-hidden="true"></span>
+        Click / toque para abrir detalle
+      </div>
+
+      <div class="pcr-controls">
+        <button id="pcrPauseBtn" class="pcr-btn" type="button" aria-pressed="false"></button>
+        <button id="pcrSpeedBtn" class="pcr-btn" type="button"></button>
+      </div>
+    </div>
+
+    <div class="pcr-viewport" id="pcrViewport">
+      <div class="pcr-track" id="pcrTrack"></div>
+      <div class="pcr-fade pcr-fade-left" aria-hidden="true"></div>
+      <div class="pcr-fade pcr-fade-right" aria-hidden="true"></div>
     </div>
   </div>
 </section>
 
-    <!-- PROYECTOS -->
-    <section class="section" id="proyectos">
-      <div class="container">
-        <div class="section-head">
-          <p class="kicker reveal" data-reveal data-i18n="projects.kicker">Portfolio</p>
-          <h2 class="reveal" data-reveal data-delay="60" data-i18n="projects.title">Proyectos recientes</h2>
-          <p class="muted reveal" data-reveal data-delay="120" data-i18n="projects.subtitle">Piezas claras y enfocadas
-            en resultados.</p>
+<dialog class="pcr-modal" id="pcrModal" aria-label="Detalle del proyecto">
+  <div class="pcr-modal-card" role="document">
+    <button class="pcr-close" id="pcrClose" aria-label="Cerrar" type="button">✕</button>
+
+    <header class="pcr-modal-head">
+      <div class="pcr-badge" id="pcrBadge">Proyecto</div>
+      <h3 class="pcr-modal-title" id="pcrTitle"></h3>
+      <p class="pcr-modal-desc" id="pcrDesc"></p>
+
+      <div class="pcr-meta">
+        <div class="pcr-meta-item">
+          <span class="pcr-meta-label">Tiempo estimado</span>
+          <span class="pcr-meta-value" id="pcrDays"></span>
         </div>
 
-        <div class="grid cards-3">
-          <article class="card project tilt reveal" data-reveal data-tilt>
-            <div class="card-thumb"></div>
-            <div class="card-meta">
-              <h3 data-i18n="projects.p1.title">Proyecto 01</h3>
-              <p class="muted" data-i18n="projects.p1.desc">Landing enfocada en consultas y conversión.</p>
-            </div>
-          </article>
-
-          <article class="card project tilt reveal" data-reveal data-delay="60" data-tilt>
-            <div class="card-thumb"></div>
-            <div class="card-meta">
-              <h3 data-i18n="projects.p2.title">Proyecto 02</h3>
-              <p class="muted" data-i18n="projects.p2.desc">Sitio institucional moderno y rápido.</p>
-            </div>
-          </article>
-
-          <article class="card project tilt reveal" data-reveal data-delay="120" data-tilt>
-            <div class="card-thumb"></div>
-            <div class="card-meta">
-              <h3 data-i18n="projects.p3.title">Proyecto 03</h3>
-              <p class="muted" data-i18n="projects.p3.desc">Web a medida con secciones escalables.</p>
-            </div>
-          </article>
+        <div class="pcr-meta-item">
+          <span class="pcr-meta-label">Tecnologías</span>
+          <div class="pcr-chips" id="pcrTech"></div>
         </div>
       </div>
-    </section>
+    </header>
+
+    <div class="pcr-modal-body">
+      <div class="pcr-gallery">
+        <div class="pcr-main">
+          <img id="pcrMainImg" alt="Vista principal del proyecto" />
+          <div class="pcr-shine" aria-hidden="true"></div>
+        </div>
+        <div class="pcr-thumbs" id="pcrThumbs"></div>
+      </div>
+
+      <aside class="pcr-side">
+        <div class="pcr-panel">
+          <h4>Qué incluye</h4>
+          <ul id="pcrIncludes"></ul>
+        </div>
+
+        <div class="pcr-panel pcr-panel-cta">
+          <h4>¿Querés algo similar?</h4>
+          <p>Te armamos una solución a medida con diseño, animaciones y performance.</p>
+
+          <button id="pcrCtaBtn" class="pcr-btn pcr-btn-primary" type="button">
+            Solicitar algo similar <span aria-hidden="true">↗</span>
+          </button>
+
+          <a id="pcrCtaLink" class="pcr-link" href="#" target="_blank" rel="noreferrer">
+            o escribir por WhatsApp / Email →
+          </a>
+        </div>
+      </aside>
+    </div>
+  </div>
+</dialog>
+
+<script src="./prc.js" defer></script>
 
     <!-- PROCESO -->
     <section class="section" id="proceso">

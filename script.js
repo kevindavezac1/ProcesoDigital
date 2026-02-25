@@ -901,3 +901,4 @@ faqItems.forEach((item) => {
   window.addEventListener("load", onResize);
   window.addEventListener("resize", onResize, { passive: true });
 })();
+
