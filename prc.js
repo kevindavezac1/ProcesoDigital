@@ -37,7 +37,7 @@ document.addEventListener("DOMContentLoaded", () => {
       cover: "./img/img-projects/landing-turnos.jpg",
       images: ["./img/img-projects/landing-turnos.jpg"],
       includes: ["Diseño UI", "Secciones a medida", "WhatsApp / Form", "Deploy + performance"],
-      cta: "https://wa.link/"
+      cta: "https://wa.link/a8bk03"
     },
     {
       badge: "Automatización",
@@ -49,7 +49,7 @@ document.addEventListener("DOMContentLoaded", () => {
       cover: "./img/img-projects/registro-asistencia.png",
       images: ["./img/img-projects/registro-asistencia.png"],
       includes: ["Validación", "Registro", "Panel", "Documentación"],
-      cta: "https://wa.link/"
+      cta: "https://wa.link/a8bk03"
     },
     {
       badge: "Data",
@@ -61,7 +61,7 @@ document.addEventListener("DOMContentLoaded", () => {
       cover: "./img/img-projects/panel-metricas.png",
       images: ["./img/img-projects/panel-metricas.png"],
       includes: ["KPIs", "Eventos", "Tableros", "Entrega final"],
-      cta: "https://wa.link/"
+      cta: "https://wa.link/a8bk03"
     }
   ];
 
