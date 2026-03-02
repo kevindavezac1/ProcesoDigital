@@ -67,9 +67,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // Velocidades
   const speeds = [
-    { label: "Lenta", value: "34s" },
-    { label: "Normal", value: "26s" },
-    { label: "Rápida", value: "18s" }
+    { label: "Lenta", value: "30s" },
+    { label: "Normal", value: "30s" },
+    { label: "Rápida", value: "30s" }
   ];
   let speedIndex = 1;
 
@@ -100,7 +100,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   track.innerHTML = projects.map(cardHTML).join("") + projects.map(cardHTML).join("");
-  setSpeed("7s");
+  setSpeed("20s");
 
   // Config speed
   // setSpeed(speeds[speedIndex].value);
